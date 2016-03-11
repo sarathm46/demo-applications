@@ -4,31 +4,31 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/addressBookList");
 	$stateProvider.state("home", {
 		url : "/addressBookList",
-		templateUrl : "/address-book/app/addressBookList",
+		templateUrl : "/app/addressBookList",
 		controller : "listAddressController"
 	}).state("addAddress", {
 		url : "/addAddress",
-		templateUrl : "/address-book/app/addAddress",
+		templateUrl : "/app/addAddress",
 		controller : "addAdressController"
 	}).state("settings", {
 		url : "/settings",
-		templateUrl : "/address-book/app/settings",
+		templateUrl : "/app/settings",
 		controller : "settingsController"
 	}).state("addUser", {
 		url : "/addUser",
-		templateUrl : "/address-book/app/addUser",
+		templateUrl : "/app/addUser",
 		controller : "addUserController"
 	}).state("listUser", {
 		url : "/listUser",
-		templateUrl : "/address-book/app/listUser",
+		templateUrl : "/app/listUser",
 		controller : "listUserController"
 	}).state("editUser", {
 		url : "/editUser/:id",
-		templateUrl : "/address-book/app/editUser",
+		templateUrl : "/app/editUser",
 		controller : "editUserController"
 	}).state("editAddress", {
 		url : "/editAddress/:id",
-		templateUrl : "/address-book/app/editAddress",
+		templateUrl : "/app/editAddress",
 		controller : "editAddressController"
 	});
 });
@@ -37,7 +37,7 @@ app.controller("settingsController", function($scope) {
 app.controller("editUserController",
 		function($scope, $stateParams, $http, $log) {
 
-			$http.get("/address-book/app/rest/user/" + $stateParams.id).then(
+			$http.get("/app/rest/user/" + $stateParams.id).then(
 					function(response) {
 						$scope.newName = response.data.name;
 						$scope.newUsername = response.data.username;
@@ -51,7 +51,7 @@ app.controller("editUserController",
 					username : $scope.newUsername,
 					password : $scope.newPassword
 				};
-				$http.post("/address-book/app/rest/user", user).then(
+				$http.post("/app/rest/user", user).then(
 						function(response) {
 							console.log(response);
 							if (response.status == 200) {
@@ -67,11 +67,11 @@ app.controller("editUserController",
 app.controller("editAddressController", function($scope, $stateParams, $http,
 		$log) {
 
-	$http.get("/address-book/app/rest/address/" + $stateParams.id).then(function(response) {
+	$http.get("/app/rest/address/" + $stateParams.id).then(function(response) {
 		$scope.newName = response.data.name;
 		$scope.newPhoneNumber = response.data.phoneNumber;
 		$scope.newAddress = response.data.address;
-
+		$scope.newEmail = response.data.email;
 	}, function(response) {
 	});
 	$scope.submitUser = function() {
@@ -79,9 +79,10 @@ app.controller("editAddressController", function($scope, $stateParams, $http,
 			id : $stateParams.id,
 			name : $scope.newName,
 			phoneNumber : $scope.newPhoneNumber,
-			address : $scope.newAddress
+			address : $scope.newAddress,
+			email : $scope.newEmail
 		};
-		$http.post("/address-book/app/rest/user", address).then(function(response) {
+		$http.post("/app/rest/user", address).then(function(response) {
 			console.log(response);
 			if (response.status == 200) {
 				showMessage("Success", "Successfully updated the Address.");
@@ -107,13 +108,13 @@ app
 						};
 
 						$http
-								.post("/address-book/app/rest/duplicatecheck", user)
+								.post("/app/rest/duplicatecheck", user)
 								.then(
 										function(response) {
 											console.log(response);
 											if (!response.data.duplicate) {
 												$http
-														.post("/address-book/app/rest/user",
+														.post("/app/rest/user",
 																user)
 														.then(
 																function(
@@ -148,7 +149,7 @@ app
 					}
 				});
 app.controller("listAddressController", function($scope, $http) {
-	$http.get("/address-book/app/rest/address").then(function(response) {
+	$http.get("/app/rest/address").then(function(response) {
 		console.log(response);
 		$scope.addressBookList = response.data;
 	}, function(response) {
@@ -157,8 +158,8 @@ app.controller("listAddressController", function($scope, $http) {
 
 	$scope.deleteAddress = function(id) {
 		confirm("Confirm", "Are you sure to delete ?", function() {
-			$http.post("/address-book/app/rest/address/" + id).then(function(response) {
-				$http.get("/address-book/app/rest/address").then(function(response) {
+			$http.post("/app/rest/address/" + id).then(function(response) {
+				$http.get("/app/rest/address").then(function(response) {
 					console.log(response);
 					$scope.addressBookList = response.data;
 				}, function(response) {
@@ -172,7 +173,7 @@ app.controller("listAddressController", function($scope, $http) {
 });
 
 app.controller("listUserController", function($scope, $http) {
-	$http.get("/address-book/app/rest/users").then(function(response) {
+	$http.get("/app/rest/users").then(function(response) {
 		console.log(response);
 		$scope.users = response.data;
 	}, function(response) {
@@ -181,8 +182,8 @@ app.controller("listUserController", function($scope, $http) {
 
 	$scope.deleteAppUser = function(id) {
 		confirm("Confirm", "Are you sure to delete ?", function() {
-			$http.post("/address-book/app/rest/user/" + id).then(function(response) {
-				$http.get("/address-book/app/rest/users").then(function(response) {
+			$http.post("/app/rest/user/" + id).then(function(response) {
+				$http.get("/app/rest/users").then(function(response) {
 					console.log(response);
 					$scope.users = response.data;
 				}, function(response) {
@@ -205,7 +206,7 @@ app.controller("addAdressController", function($scope, $http) {
 			phoneNumber : $scope.newPhoneNumber,
 			address : $scope.newAddress
 		};
-		$http.post("/address-book/app/rest/address", address).then(function(response) {
+		$http.post("/app/rest/address", address).then(function(response) {
 			console.log(response);
 			if (response.status == 200) {
 
