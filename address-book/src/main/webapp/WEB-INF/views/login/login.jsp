@@ -54,12 +54,6 @@
 								</div>
 								<!-- Change this to a button or input when using this as a form -->
 								<input type="submit" class="btn btn-sm btn-success" />
-								<hr class="hr">
-								<h4>Sign in with</h4>
-								<br /> <a href="<c:url value='/signInGoogle'/>"
-									class="btn btn-sm btn-info"> Google+</a> <a
-									href="<c:url value='/signInFacebook'/>"
-									class="btn btn-sm btn-info"> Facebook</a>
 							</fieldset>
 						</form>
 					</div>

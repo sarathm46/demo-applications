@@ -2,16 +2,16 @@ spring:
   resources:
     chain:
       enabled: true
-
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-
 facebook:
   client:
-    clientId: {facebook-clientId}
-    clientSecret: {facebook-clientSecret}
+    clientId:
+      facebook-clientId: null
+    clientSecret:
+      facebook-clientSecret: null
     accessTokenUri: https://graph.facebook.com/oauth/access_token
     userAuthorizationUri: https://www.facebook.com/dialog/oauth
     tokenName: oauth_token
@@ -22,8 +22,10 @@ facebook:
     userInfoUri: https://graph.facebook.com/me
 google:
   client:
-    clientId: {google-clientId}
-    clientSecret: {goolge-clientSecret}
+    clientId:
+      google-clientId: null
+    clientSecret:
+      goolge-clientSecret: null
     accessTokenUri: https://accounts.google.com/o/oauth2/token
     userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
     scope: profile email
