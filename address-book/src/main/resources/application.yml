@@ -1,0 +1,25 @@
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    preEstablishedRedirectUri: http://localhost:8080/redirected
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+google:
+  client:
+    clientId: 981495540834-10q2tbohd52dpd88n89iemmnq8rp1n4j.apps.googleusercontent.com
+    clientSecret: tAKi21RH8XTQnnK4CX2-h69K
+    accessTokenUri: https://accounts.google.com/o/oauth2/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    preEstablishedRedirectUri: http://localhost:8080/redirected
+    useCurrentUri: false
+    scope:
+    - https://www.googleapis.com/auth/contacts.readonly
+    - email
+  resource:
+    userInfoUri: https://www.googleapis.com/plus/v1/people/me

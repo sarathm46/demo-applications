@@ -1,31 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>Login</title>
-<script src='<c:url value="/resources/lib/jquery/jquery.min.js" />'></script>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
 
-<script src='<c:url value="/resources/lib/pace/pace.min.js"/>'></script>
-<script type="text/javascript">
-	window.paceOptions = {
-		document : true,
-		eventLag : true,
-		restartOnPushState : true,
-		restartOnRequestAfter : true,
-		ajax : {
-			trackMethods : [ 'POST', 'GET' ]
-		}
-
-	};
-</script>
+<link rel="stylesheet" type="text/css"
+	href="webjars/font-awesome/4.5.0/css/font-awesome.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
-<body>
-
-	<jsp:include page="\template\header.jsp" />
+<body ng-app="app" ng-controller="home as home">
 
 	<c:url value='/app/login' var="login" />
 	<div style="height: 50px"></div>
@@ -48,7 +43,7 @@
 										name="password" type="password" value="">
 								</div>
 								<div class="checkbox">
-									<label> <input name="remember" type="checkbox"
+									<label> <input name="remember-me" type="checkbox"
 										value="Remember Me">Remember Me
 									</label>
 								</div>
@@ -56,10 +51,15 @@
 								<input type="submit" class="btn btn-sm btn-success" />
 								<hr class="hr">
 								<h4>Sign in with</h4>
-								<br /> <a href="<c:url value='/signInGoogle'/>"
-									class="btn btn-sm btn-info"> Google+</a> <a
-									href="<c:url value='/signInFacebook'/>"
-									class="btn btn-sm btn-info"> Facebook</a>
+
+								<c:url value="/login/github" var="gitUrl" />
+								<c:url value="/login/facebook" var="facebookUrl" />
+								<c:url value="/login/google" var="googleUrl" />
+								<br /> <a href="${googleUrl}" class="btn btn-sm btn-info">
+									<span class="fa fa-google-plus"></span>  Google
+								</a> <a href="${facebookUrl}" class="btn btn-sm btn-info"> <span
+									class="fa fa-facebook"></span>  Facebook
+								</a>
 							</fieldset>
 						</form>
 					</div>
@@ -67,6 +67,8 @@
 			</div>
 		</div>
 	</div>
+
+
 
 </body>
 </html>
