@@ -8,10 +8,8 @@ spring:
       suffix: .jsp
 facebook:
   client:
-    clientId:
-      facebook-clientId: null
-    clientSecret:
-      facebook-clientSecret: null
+    clientId: null
+    clientSecret: null
     accessTokenUri: https://graph.facebook.com/oauth/access_token
     userAuthorizationUri: https://www.facebook.com/dialog/oauth
     tokenName: oauth_token
@@ -22,10 +20,8 @@ facebook:
     userInfoUri: https://graph.facebook.com/me
 google:
   client:
-    clientId:
-      google-clientId: null
-    clientSecret:
-      goolge-clientSecret: null
+    clientId: null
+    clientSecret: null
     accessTokenUri: https://accounts.google.com/o/oauth2/token
     userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
     scope: profile email
