@@ -1,0 +1,14 @@
+spring:
+  resources:
+    chain:
+      enabled: true
+google:
+  client:
+    clientId: 981495540834-tt0h0lik5b45vlse0qhicolt1cbjp79v.apps.googleusercontent.com
+    clientSecret: cDCdmYtBpGmZWZh9hJ820Bnu
+    accessTokenUri: https://accounts.google.com/o/oauth2/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+    scope: profile email https://www.googleapis.com/auth/contacts.readonly
+  resource:
+    userInfoUri: https://www.googleapis.com/plus/v1/people/me
+    preferTokenInfo: false
