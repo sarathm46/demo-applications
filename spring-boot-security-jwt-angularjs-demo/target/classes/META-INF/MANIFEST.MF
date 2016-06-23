@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: jwt-demo
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Sarath
-Implementation-Vendor-Id: com.example
-Build-Jdk: 1.8.0_65
-Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
-
